@@ -25,6 +25,8 @@ static RESULT NOP_nop_(void) {
 CCP_CmdRet Cmd_NOP(const CommonCmdPacket* packet)
 {
   (void)packet;
+  printf("test by juntheworld!!!!");
+  exit(0);
   return CCP_make_cmd_ret_without_err_code(CCP_EXEC_SUCCESS);
 }
 
