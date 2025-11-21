@@ -1,3 +1,30 @@
+# Setting for gcov fuzzing
+gcov build
+```
+cd c2a-core/examples/mobc
+
+rm -rf target
+
+# gcov flag 삽입
+export CC=gcc
+export CXX=g++
+export CFLAGS="--coverage -O0"
+export CXXFLAGS="--coverage -O0"
+
+# 중요 -> Rust는 LDFLAGS를 무시함.
+export RUSTFLAGS="-C link-arg=--coverage -C link-arg=-lgcov"
+
+./init_coverage.sh
+pnpm run devtools:sils
+```
+after execution with nop
+```
+./coverage_logger.sh
+./merge.sh
+./gen_html.sh
+```
+
+
 # Core of Command Centric Architecture
 
 ## C2A
